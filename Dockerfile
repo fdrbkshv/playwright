@@ -1,5 +1,6 @@
 # Какую версию используем
-FROM node:20-alpine 
-COPY ..
+FROM mcr.microsoft.com/playwright
+COPY . .
 RUN npm i
+RUN npx playwright install --with-deps
 CMD ["npm", "run", "test"]
