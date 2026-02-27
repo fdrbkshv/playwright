@@ -1,6 +1,6 @@
 // @ts-check
 import { defineConfig, devices } from '@playwright/test';
-
+import * as os from "os";
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -26,7 +26,18 @@ export default defineConfig({
   reporter: [
     ['line'],  
     ['html', { open: 'never' } ],
-    ['allure-playwright']
+    ['allure-playwright',
+      {
+        detail: true,
+        suiteTitle: false,
+        environmentInfo: {
+          os_platform: os.platform(),
+          os_relese: os.release(),
+          node_version: process.version,
+        },
+      },
+
+    ]
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
