@@ -33,6 +33,7 @@ export default defineConfig({
         environmentInfo: {
           os_platform: os.platform(),
           os_relese: os.release(),
+          os_version: os.version(),
           node_version: process.version,
         },
       },
